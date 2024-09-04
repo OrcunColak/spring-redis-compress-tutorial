@@ -1,3 +1,8 @@
+# Read me
+
+The original idea is from  
+https://blog.devops.dev/how-does-spring-boot-compress-json-and-write-it-to-redis-bba920f1e35f
+
 # Redis Insight
 
 Go to  
