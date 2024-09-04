@@ -15,21 +15,9 @@
     <description>Demo project for Spring Boot using Redis</description>
     <properties>
         <java.version>21</java.version>
-        <maven.os.plugin.version>1.7.1</maven.os.plugin.version>
-        <maven.protobuf.plugin.version>0.6.1</maven.protobuf.plugin.version>
-        <java.protobuf.version>4.0.0-rc-2</java.protobuf.version>
     </properties>
 
-
     <build>
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>${maven.os.plugin.version}</version>
-            </extension>
-        </extensions>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -43,40 +31,8 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>${maven.protobuf.plugin.version}</version>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <protoTestSourceRoot>${project.basedir}/src/main/proto</protoTestSourceRoot>
-                    <protocArtifact>com.google.protobuf:protoc:${java.protobuf.version}:exe:${os.detected.classifier}
-                    </protocArtifact>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.protobuf</groupId>
-                <artifactId>protobuf-bom</artifactId>
-                <version>${java.protobuf.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -84,66 +40,20 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-        </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!--Open API-->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-
-        <!--Redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>com.redis.om</groupId>-->
-        <!--            <artifactId>redis-om-spring</artifactId>-->
-        <!--            <version>0.8.6</version>-->
-        <!--        </dependency>-->
-
-        <!--Test-->
+        <!--Testing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- Includes @ServiceConnection support -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-testcontainers</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!-- Includes JUnit support for Testcontainers using @Container annotation-->
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Includes RedisContainer support. -->
-        <dependency>
-            <groupId>com.redis.testcontainers</groupId>
-            <artifactId>testcontainers-redis</artifactId>
-            <version>1.6.4</version>
-        </dependency>
     </dependencies>
-
 </project>
